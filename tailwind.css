@@ -41,3 +41,130 @@
     --dot-progress: 100%
   }
 }
+
+/* Flickering animation */
+@keyframes flickerTextGreen {  
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow:
+    0 0 4px #fff,
+    0 0 11px #fff,
+    0 0 19px #fff,
+    0 0 40px #0fa,
+    0 0 80px #0fa,
+    0 0 90px #0fa,
+    0 0 100px #0fa,
+    0 0 150px #0fa;
+  }
+  20%, 24%, 55% {        
+    text-shadow: none;
+  }    
+}
+
+@keyframes flickerBorderGreen {  
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    box-shadow:
+      0 0 1px #fff,
+      0 0 3px #fff,
+      0 0 9px #fff,
+      0 0 10px #0fa,
+      0 0 20px #0fa,
+      0 0 30px #0fa,
+      0 0 60px #0fa,
+      0 0 90px #0fa;
+  }
+  20%, 24%, 55% {        
+    box-shadow: none;
+  }    
+}
+
+@keyframes flickerTextYellow {  
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow:
+    0 0 1px #fff,
+    0 0 3px #fff,
+    0 0 9px #fff,
+    0 0 10px #e5ff00,
+    0 0 20px #e5ff00,
+    0 0 30px #e5ff00,
+    0 0 60px #e5ff00,
+    0 0 90px #e5ff00;
+  }
+  20%, 24%, 55% {        
+    text-shadow: none;
+  }    
+}
+
+@keyframes flickerBorderYellow {  
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    box-shadow:
+      0 0 1px #fff,
+      0 0 3px #fff,
+      0 0 9px #fff,
+      0 0 10px #e5ff00,
+      0 0 20px #e5ff00,
+      0 0 30px #e5ff00,
+      0 0 60px #e5ff00,
+      0 0 90px #e5ff00;
+  }
+  20%, 24%, 55% {        
+    box-shadow: none;
+  }    
+}
+
+@keyframes flickerTextRed {  
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow:
+    0 0 4px #fff,
+    0 0 11px #fff,
+    0 0 19px #fff,
+    0 0 40px #ff4848,
+    0 0 80px #ff4848,
+    0 0 90px #ff4848,
+    0 0 100px #ff4848,
+    0 0 150px #ff4848;
+  }
+  20%, 24%, 55% {        
+    text-shadow: none;
+  }    
+}
+
+@keyframes flickerBorderRed {  
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    box-shadow:
+      0 0 1px #fff,
+      0 0 3px #fff,
+      0 0 9px #fff,
+      0 0 10px #ff4848,
+      0 0 20px #ff4848,
+      0 0 30px #ff4848,
+      0 0 60px #ff4848,
+      0 0 90px #ff4848;
+  }
+  20%, 24%, 55% {        
+    box-shadow: none;
+  }    
+}
+
+.animation-neon-green-text {
+  animation: flickerTextGreen 1s linear 2.5s forwards;
+}
+
+.animation-neon-green-text-infinite {
+  animation: flickerTextGreen 1s linear 2.5s infinite alternate;
+}
+
+.animation-neon-yellow-text {
+  animation: flickerTextYellow 1s linear 2.5s forwards;
+}
+
+.animation-neon-yellow-text-infinite {
+  animation: flickerTextYellow 1s linear 2.5s infinite alternate;
+}
+
+.animation-neon-red-text {
+  animation: flickerTextRed 1s linear 2.5s forwards;
+}
+
+.animation-neon-red-text-infinite {
+  animation: flickerTextRed 1s linear 2.5s infinite alternate;
+}
