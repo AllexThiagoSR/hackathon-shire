@@ -43,22 +43,23 @@ function LastUnits({
   }
 
   return (
-    <div class="w-full container  py-8 flex flex-col gap-12 lg:gap-16 lg:py-10">
+    <div class="w-9/12 md:w-3/12 mt-8 lg:ml-8 h-fit md:h-4/8 relative md:absolute md:top-24 md:left-6 flex-nowrap container py-6 overflow-hidden flex flex-col gap-6 lg:gap-10 lg:py-10 rounded-md border-2 border-neon-red border-solid animation-neon-red-border">
+      <h2 class="animation-neon-red-text-infinite neon-red-text text-2xl text-center py-2">Últimas Unidades</h2>
       <div
         id={id}
-        class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5"
+        class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5 hover:pl-2 hover:overflow-auto hover:scrollbar-hide overflow-hidden scrollbar-hide hover:cursor-pointer"
       >
-          <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5">
+          <Slider class="gap-3 lg:gap-6 col-start-1 col-end-5 col-span-full max-h-96 py-2">
           {lastUnits?.map((product, index) => (
             <Slider.Item
               index={index}
-              class="carousel-item w-[270px] sm:w-[292px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
+              class="py-2 sm:first:pl-0 last:pr-6 sm:last:pr-0 text-center"
             >
-              <img src = {product.thumbnail} />  
-              <h2>{ product.title }</h2>
-              <div>{ product.original_price }</div>
-              <div>{ product.price }</div>
-              <div>Unidades Disponíveis: { product.available_quantity }</div>
+              <img class="rounded-md mx-auto md:w-6/12" src={product.thumbnail} />  
+              <h2 class="hidden text-sm">{ product.title }</h2>
+              <div class="hidden text-sm">{ product.original_price }</div>
+              <div class="hidden text-sm">{ product.price }</div>
+              <div class="text-sm">Unidades Disponíveis: { product.available_quantity }</div>
             </Slider.Item>
           ))}
         </Slider>
