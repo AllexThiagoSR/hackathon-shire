@@ -10,24 +10,29 @@ import { useOffer } from "$store/sdk/useOffer.ts";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import type { Product } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
+import { SectionProps } from "deco/blocks/section.ts";
 
 export interface Props {
   categoryId: string;
+  quantity?: number;
 }
 
-export async function loader({ categoryId }: Props) {
-  const products = await (await fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}`)).json();
-  return { products: products.results };
+export async function loader({ categoryId, quantity = 10 }: Props) {
+  const products = await (
+    await fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}`)
+  ).json();
+  return { products: products.results, quantity };
 }
-
-interface SectionProps<T> extends T {}
 
 function BestSellers({
   products,
+  quantity,
 }: SectionProps<typeof loader>) {
   const id = useId();
   const platform = usePlatform();
-  const sortedProducts = products.sort((a, b) => Number(b.sold_quantity) - Number(a.sold_quantity));
+  const sortedProducts = products
+    .sort((a, b) => Number(b.sold_quantity) - Number(a.sold_quantity))
+    .filter((_, index) => index <= quantity - 1);
 
   if (!products || products.length === 0) {
     return null;
