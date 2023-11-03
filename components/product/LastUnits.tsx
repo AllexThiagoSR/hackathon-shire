@@ -16,24 +16,27 @@ import { categoryType } from "$store/components/product/Types/categoryType.ts";
 
 export interface Props {
   category: categoryType;
+  quantity?: number;
+  lastUnitsQuantity: number;
 }
 
-export async function loader({ category, quantity = 10 }: Props) {
+export async function loader({ category, quantity = 10, lastUnitsQuantity }: Props) {
   const products = await (
     await fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${categoryToId(category)}`)
   ).json();
-  return { products: products.results, quantity };
+  return { products: products.results, quantity, lastUnitsQuantity };
 }
 
 function LastUnits({
   products,
   quantity,
+  lastUnitsQuantity,
 }: SectionProps<typeof loader>) {
   const id = useId();
   const platform = usePlatform();
   const lastUnits = products
     .sort((a, b) => Number(a.available_quantity) - Number(b.available_quantity))
-    .filter((_, index) => index <= quantity - 1);
+    .filter((p, index) => index <= quantity - 1 && Number(p.available_quantity) <= lastUnitsQuantity);
 
   if (!products || products.length === 0) {
     return null;
