@@ -12,26 +12,31 @@ import type { Product } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import categoryToId from "$store/components/product/Utils/categoryToId.ts";
 import { categoryType } from "$store/components/product/Types/categoryType.ts";
+import { SectionProps } from "deco/blocks/section.ts";
 
 export interface Props {
   category: categoryType;
   discount: number;
+  quantity?: number;
 }
 
-export async function loader({ category, discount }: Props) {
-  const products = await (await fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${categoryToId(category)}`)).json();
-  return { products: products.results, discount };
+export async function loader({ category, discount, quantity = 10 }: Props) {
+  const products = await (
+    await fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${categoryToId(category)}`)
+  ).json();
+  return { products: products.results, discount, quantity };
 }
-
-interface SectionProps<T> extends T {}
 
 function DiscountShelf({
   products,
-  discount
+  discount,
+  quantity
 }: SectionProps<typeof loader>) {
   const id = useId();
   const platform = usePlatform();
-  const filteredProducts = products.filter(({price, original_price}) =>  1 - Number(price) / Number(original_price) >= discount / 100);
+  const filteredProducts = products
+    .filter(({price, original_price}, index) =>  1 - Number(price) / Number(original_price) >= discount / 100)
+    .filter((_, index) => index <= quantity - 1);
 
   if (!products || products.length === 0) {
     return null;
