@@ -17,18 +17,17 @@ export interface Props {
 
 export async function loader({ categoryId }: Props) {
   const products = await (await fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}`)).json();
-  console.log(products);
   return { products: products.results };
 }
 
 interface SectionProps<T> extends T {}
 
-function LastUnits({
+function BestSellers({
   products,
 }: SectionProps<typeof loader>) {
   const id = useId();
   const platform = usePlatform();
-  const lastUnits = products.sort((a, b) => Number(a.available_quantity) - Number(b.available_quantity));
+  const sortedProducts = products.sort((a, b) => Number(b.sold_quantity) - Number(a.sold_quantity));
 
   if (!products || products.length === 0) {
     return null;
@@ -41,7 +40,7 @@ function LastUnits({
         class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5"
       >
           <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5">
-          {lastUnits?.map((product, index) => (
+          {sortedProducts?.map((product, index) => (
             <Slider.Item
               index={index}
               class="carousel-item w-[270px] sm:w-[292px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
@@ -50,7 +49,7 @@ function LastUnits({
               <h2>{ product.title }</h2>
               <div>{ product.original_price }</div>
               <div>{ product.price }</div>
-              <div>Unidades Disponíveis: { product.available_quantity }</div>
+
             </Slider.Item>
           ))}
         </Slider>
@@ -74,4 +73,4 @@ function LastUnits({
   );
 }
 
-export default LastUnits;
+export default BestSellers;
