@@ -63,14 +63,14 @@
 @keyframes flickerBorderGreen {  
   0%, 18%, 22%, 25%, 53%, 57%, 100% {
     box-shadow:
-      0 0 1px #fff,
-      0 0 3px #fff,
-      0 0 9px #fff,
-      0 0 10px #0fa,
-      0 0 20px #0fa,
-      0 0 30px #0fa,
-      0 0 60px #0fa,
-      0 0 90px #0fa;
+    0 0 1px #fff,
+    0 0 3px #fff,
+    0 0 7px #fff,
+    0 0 8px #0fa,
+    0 0 10px #0fa,
+    0 0 20px #0fa,
+    0 0 30px #0fa,
+    0 0 50px #0fa;
   }
   20%, 24%, 55% {        
     box-shadow: none;
@@ -165,14 +165,14 @@
 @keyframes flickerBorderOrange {  
   0%, 18%, 22%, 25%, 53%, 57%, 100% {
     box-shadow:
-      0 0 1px #fff,
-      0 0 3px #fff,
-      0 0 9px #fff,
-      0 0 10px #ff9a48,
-      0 0 20px #ff9a48,
-      0 0 30px #ff9a48,
-      0 0 60px #ff9a48,
-      0 0 90px #ff9a48;
+    0 0 1px #fff,
+    0 0 3px #fff,
+    0 0 7px #fff,
+    0 0 8px #ff9a48,
+    0 0 10px #ff9a48,
+    0 0 20px #ff9a48,
+    0 0 30px #ff9a48,
+    0 0 50px #ff9a48;
   }
   20%, 24%, 55% {        
     box-shadow: none;
@@ -201,12 +201,12 @@
     box-shadow:
       0 0 1px #fff,
       0 0 3px #fff,
-      0 0 9px #fff,
+      0 0 7px #fff,
+      0 0 8px #3d60fc,
       0 0 10px #3d60fc,
       0 0 20px #3d60fc,
       0 0 30px #3d60fc,
-      0 0 60px #3d60fc,
-      0 0 90px #3d60fc;
+      0 0 50px #3d60fc;
   }
   20%, 24%, 55% {        
     box-shadow: none;
@@ -219,6 +219,10 @@
 
 .animation-neon-green-text-infinite {
   animation: flickerTextGreen 1s linear 1.5s infinite alternate;
+}
+
+.animation-neon-green-border {
+  animation: flickerBorderGreen 1s linear 0.7s forwards;
 }
 
 .animation-neon-yellow-text {
@@ -241,7 +245,6 @@
   animation: flickerBorderRed 1s linear 0.3s forwards;
 }
 
-
 .animation-neon-orange-text {
   animation: flickerTextOrange 1s linear 1.5s forwards;
 }
@@ -250,10 +253,14 @@
   animation: flickerTextOrange 1s linear 1.5s infinite alternate;
 }
 
+.animation-neon-orange-border {
+  animation: flickerBorderOrange 1s linear 0.7s forwards;
+}
+
 .animation-neon-blue-text {
   animation: flickerTextBlue 1s linear 1.5s forwards;
 }
 
-.animation-neon-blue-text-infinite {
-  animation: flickerTextBlue 1s linear 1.5s infinite alternate;
+.animation-neon-blue-border {
+  animation: flickerBorderBlue 1s linear 0.7s forwards;
 }

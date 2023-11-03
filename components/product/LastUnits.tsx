@@ -44,7 +44,7 @@ function LastUnits({
 
   return (
     <div class="w-9/12 md:w-3/12 mt-8 lg:ml-8 h-fit md:h-4/8 relative md:absolute md:top-24 md:left-6 flex-nowrap container py-6 overflow-hidden flex flex-col gap-6 lg:gap-10 lg:py-10 rounded-md border-2 border-neon-red border-solid animation-neon-red-border">
-      <h2 class="animation-neon-red-text-infinite neon-red-text text-2xl text-center py-2">Últimas Unidades</h2>
+      <h2 class="animation-neon-red-text-infinite text-2xl text-center py-2">Últimas Unidades</h2>
       <div
         id={id}
         class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5 hover:pl-2 hover:overflow-auto hover:scrollbar-hide overflow-hidden scrollbar-hide hover:cursor-pointer"
