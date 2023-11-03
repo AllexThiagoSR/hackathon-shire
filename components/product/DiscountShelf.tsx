@@ -10,17 +10,19 @@ import { useOffer } from "$store/sdk/useOffer.ts";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import type { Product } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
+import categoryToId from "$store/components/product/Utils/categoryToId.ts";
+import { categoryType } from "$store/components/product/Types/categoryType.ts";
 import { SectionProps } from "deco/blocks/section.ts";
 
 export interface Props {
-  categoryId: string;
+  category: categoryType;
   discount: number;
   quantity?: number;
 }
 
-export async function loader({ categoryId, discount, quantity = 10 }: Props) {
+export async function loader({ category, discount, quantity = 10 }: Props) {
   const products = await (
-    await fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}&limit=${quantity}`)
+    await fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${categoryToId(category)}`)
   ).json();
   return { products: products.results, discount, quantity };
 }
