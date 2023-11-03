@@ -53,22 +53,24 @@ function DiscountShelf({
   }
 
   return (
-    <div class="w-9/12 md:w-4/12 h-52 container py-8 flex flex-col gap-12 lg:gap-16 lg:py-10 relative lg:absolute md:top-24 md:right-6">
+    <div class="w-9/12 md:w-4/12 h-full container py-8 flex flex-col gap-6 lg:gap-10 lg:py-10 relative lg:absolute md:top-16 md:right-6">
       <div
         id={id}
-        class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5"
+        class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5 rounded-md border-2 border-neon-green border-solid animation-neon-green-border h-64 lg:h-60"
       >
-          <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5">
+        <h3 class="animation-neon-green-text text-neon-green text-2xl text-center py-4 md:py-2">{ discount1 }%</h3>
+        <Slider class="carousel carousel-center sm:carousel-end gap-1 col-span-full row-start-2 row-end-5 h-60">
           {filteredProducts1?.map((product, index) => (
             <Slider.Item
               index={index}
-              class="carousel-item w-[270px] sm:w-[292px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
+              class="carousel-item w-[270px] sm:w-[292px] first:pl-10 sm:first:pl-0 last:pr-6 sm:last:pr-0"
             >
-              <img src={product.thumbnail} />  
-              <h2>{ product.title }</h2>
-              <div>{ product.original_price }</div>
-              <div>{ product.price }</div>
-
+              <div class="flex-row text-center h-60 lg:h-48">
+                <img class="rounded-md mx-auto w-6/12 md:w-2/6" src={product.thumbnail} />  
+                <h2 class="text-sm break-words">{ product.title }</h2>
+                <div class="text-sm line-through">R${ product.original_price }</div>
+                <div class="text-sm font-semibold">R$ { product.price }</div>
+              </div>
             </Slider.Item>
           ))}
         </Slider>
@@ -90,19 +92,21 @@ function DiscountShelf({
       </div>
       <div
         id={id}
-        class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5"
+        class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5 rounded-md border-2 border-neon-blue border-solid animation-neon-blue-border h-64 lg:h-60"
       >
-          <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5">
+        <h3 class="animation-neon-blue-text text-neon-blue text-2xl text-center py-4 md:py-2">{ discount2 }%</h3>
+        <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5">
           {filteredProducts2?.map((product, index) => (
             <Slider.Item
               index={index}
               class="carousel-item w-[270px] sm:w-[292px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
             >
-              <img src={product.thumbnail} />  
-              <h2>{ product.title }</h2>
-              <div>{ product.original_price }</div>
-              <div>{ product.price }</div>
-
+              <div class="flex-row text-center h-60 lg:h-48">
+                <img class="rounded-md mx-auto w-6/12 md:w-2/6" src={product.thumbnail} />  
+                <h2 class="text-sm break-words">{ product.title }</h2>
+                <div class="text-sm line-through">R${ product.original_price }</div>
+                <div class="text-sm font-semibold">R$ { product.price }</div>
+              </div>
             </Slider.Item>
           ))}
         </Slider>
@@ -124,19 +128,21 @@ function DiscountShelf({
       </div>
       <div
         id={id}
-        class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5"
+        class="ccontainer grid grid-cols-[48px_1fr_48px] px-0 sm:px-5 rounded-md border-2 border-neon-orange border-solid animation-neon-orange-border h-64 lg:h-60"
       >
-          <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5">
+        <h3 class="animation-neon-orange-text text-neon-orange text-2xl text-center py-4 md:py-2">{ discount3 }%</h3>
+        <Slider class="carousel carousel-center sm:carousel-end gap-6 col-span-full row-start-2 row-end-5">
           {filteredProducts3?.map((product, index) => (
             <Slider.Item
               index={index}
               class="carousel-item w-[270px] sm:w-[292px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
             >
-              <img src={product.thumbnail} />  
-              <h2>{ product.title }</h2>
-              <div>{ product.original_price }</div>
-              <div>{ product.price }</div>
-
+              <div class="flex-row text-center h-60 lg:h-48">
+                <img class="rounded-md mx-auto w-6/12 md:w-2/6" src={product.thumbnail} />  
+                <h2 class="text-sm break-words">{ product.title }</h2>
+                <div class="text-sm line-through">R${ product.original_price }</div>
+                <div class="text-sm font-semibold">R$ { product.price }</div>
+              </div>
             </Slider.Item>
           ))}
         </Slider>
